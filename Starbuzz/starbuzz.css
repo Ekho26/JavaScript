@@ -1,0 +1,20 @@
+body {
+  background-color: bisque;
+    font-family: sans-serif;
+}
+h1 {
+  font-size: small;
+}
+h1, h3 {
+  color: green;
+  font-family: cursive;
+}
+h3 {
+  color: saddlebrown;
+}
+span {
+  color: green;
+}
+#country {
+  color: brown;
+}
