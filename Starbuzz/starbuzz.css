@@ -12,6 +12,13 @@ h1, h3 {
 h3 {
   color: #8b4513;
 }
+.Coffee {
+  color:brown;
+}
+.Tea {
+  color: green;
+  font-family: fantasy;
+}
 span {
   color: #008000;
 }
