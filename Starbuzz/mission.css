@@ -1,12 +1,12 @@
 body {
-  background-color: bisque;
+  background-color: #ffe4c4;
   font-family: sans-serif;
 }
 h1 {
   font-size: medium;
 }
 h2 {
-  color: green;
+  color: #008000;
   font-family: cursive;
   font-size: small;
 }

@@ -1,20 +1,20 @@
 body {
-  background-color: bisque;
+  background-color: #ffe4c4;
     font-family: sans-serif;
 }
 h1 {
   font-size: small;
 }
 h1, h3 {
-  color: green;
+  color: #008000;
   font-family: cursive;
 }
 h3 {
-  color: saddlebrown;
+  color: #8b4513;
 }
 span {
-  color: green;
+  color: #008000;
 }
 #country {
-  color: brown;
+  color: #a52a2a;
 }
