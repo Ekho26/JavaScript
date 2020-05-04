@@ -1,0 +1,19 @@
+body {
+    background-color: #d2691e;
+    font-size: medium;
+    font-family: cursive;
+    color: #deb887;
+}
+h1 {
+    font-size: x-large;
+    color: #201e1e;
+    font-family: fantasy;
+}
+p {
+    font-size: large;
+    color: #771e1ed5;
+    font-family: serif;
+}
+ol {
+    color: #641010;
+}
