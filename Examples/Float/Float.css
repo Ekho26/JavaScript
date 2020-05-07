@@ -1,0 +1,9 @@
+div.Float{
+    float: left;
+    height: 19px;
+    width: 80px;
+    background-color: lightgreen;
+}
+div {
+    background-color: lightsteelblue;
+}
