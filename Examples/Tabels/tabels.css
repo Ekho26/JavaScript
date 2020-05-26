@@ -1,0 +1,27 @@
+table{
+    border: 2px solid saddlebrown;
+    margin: auto;
+    margin-top: 20px;
+    background-color: silver;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+th{
+    background-color: tan;
+    border-bottom: 2px solid saddlebrown;
+    text-align: left;
+    padding-left: 5px;
+}
+td {
+    /*background-color: seashell;*/ /*pentru a putea folosi specificitatea de la tr*/
+    /*border: 1px solid black;*/ /*pentru tot td-ul, inclusiv stanga si dreapta*/
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+tr:nth-child(even) {
+    background-color: white;
+}
+tr:nth-child(odd) {
+    background-color: gray;
+}
