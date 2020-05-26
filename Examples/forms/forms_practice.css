@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+form {
+    background-color: lightgrey;
+    width: 60%;
+    padding: 0.5em;
+}
+input, select {
+    display: block; /*actioneaza ca un bloc pentru toate elementele input*/
+    margin: 0.5em;
+}
+input[type=text] {
+    width: 95%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 1em 2em;
+}
+input[type=submit] {
+    width: 95%;
+    background-color: rgb(0 ,177, 93);
+    border-radius: 10px;
+    color: white;
+    font-size: 1.1em;
+    padding: 0.5em;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: rgb(172 ,46, 8);
+} 
+select {
+    width: 95%;
+    /*color: royalblue;
+    background-color: sandybrown;
+    padding: 0.3em;*/ /*merge, dar nu este ca in exemplu*/
+    /*text-align: center;*/ /*nu functioneaza*/
+}
+/*option {
+    color: skyblue;
+    background-color: teal;
+}*/ /*nu functioneaza*/
