@@ -1,0 +1,31 @@
+a {
+    color: lightskyblue;
+    text-decoration: none;
+}
+a:link {
+
+}
+a:visited {
+    color: maroon;
+}
+a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: lightslategray;
+}
+::selection {
+    background-color: rgb(2, 221, 75);
+}
+::first-line {
+    text-transform: uppercase;
+}
+.magic {
+    display: none;
+    position: absolute;
+    top: 1em;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+}
+.dropdown:hover .magic{
+    display: block;
+}
