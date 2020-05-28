@@ -22,9 +22,14 @@ a:hover {
 .magic {
     display: none;
     position: absolute;
-    top: 1em;
+    /*top: 1em;*/
     background-color: #d3d3d3;
     border-radius: 5px;
+}
+.dropdown {
+    position: absolute;
+    background-color: lightskyblue;
+    padding: 20px;
 }
 .dropdown:hover .magic{
     display: block;
