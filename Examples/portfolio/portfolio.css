@@ -5,9 +5,10 @@
 }
 body {
     font-family: sans-serif;
+    --my-color: rgb(246, 115, 34);
 }
 nav {
-    background-color: rgb(246, 115, 34);
+    background-color: var(--my-color);
     text-align: right;
 }
 nav ul li:first-child {
@@ -41,4 +42,23 @@ a {
     bottom: 0;
     right: 0;
     left: 0;
+}
+h1 {
+    color: var(--my-color);
+    font-size: 2.7em;
+}
+#home p {
+    font-size: 1.3em;
+    color: rgb(85, 85, 85);
+    font-family: 'Merriweather';
+    width: 65%;
+    padding: 1em 0;
+}
+input[type="button"] {
+    background-color: var(--my-color);
+    color: white;
+    font-size: 1.4em;
+    border-style: none;
+    border-radius: 5px;
+    padding: 0.3em;
 }
