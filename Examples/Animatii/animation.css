@@ -1,0 +1,35 @@
+div {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 20%;
+    left: 20%;
+    background-color: darkorange;
+    text-align: center;
+    line-height: 200px;
+    border-radius: 50%;
+}
+div/* :hover */ {    /* Am comentat :hover, pentru a nu fi nevoit sa urmaresc patratelul cu mouse-ul */
+    animation-name: rotate;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate-reverse;
+    animation-fill-mode: forwards;
+}
+/* div:hover {
+    animation-play-state: paused;
+} */ /* Daca vrem ca animatia sa se opreasca atunci cand ajungem cu cursorul pe ea */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+        left: 20%;
+    }
+    50% {
+        top: 50%;
+    }
+    to {
+        transform: rotate(360deg);
+        left: 80%;
+    }
+}

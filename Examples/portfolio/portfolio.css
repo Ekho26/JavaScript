@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+body {
+    font-family: sans-serif;
+}
+nav {
+    background-color: rgb(246, 115, 34);
+    text-align: right;
+}
+nav ul li:first-child {
+    font-size: 1.2em;
+}
+li {
+    display: inline-block;
+    padding: 0.5em;
+}
+a {
+    text-decoration: none;
+    color: white;
+}

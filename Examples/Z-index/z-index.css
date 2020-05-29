@@ -1,0 +1,28 @@
+div:first-child {
+    background-color:rgba(184, 134, 11, 0.5);
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    text-align: inherit;
+    text-shadow: 10;
+    z-index: 1; /* Pentru a stabili ordinea de suprapunere */
+    /* opacity: 0.5; */ /* Daca folosim rgba, care se aplica doar pentru culoare, nu mai este nevoie de opacity */
+}
+div:nth-child(2) {
+    background-color: lawngreen;
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    /* z-index: -1;*/ /* Daca nu punem pe primul div ordinea de suprapunere si vrem ca acesta sa fie dedesubt*/
+}
+div:nth-child(3) {
+    margin-top: 30%;
+    height: 20%;
+    position: relative;
+    /* background-color: rgba(, , , 0.5); */
+    z-index: 2;
+}

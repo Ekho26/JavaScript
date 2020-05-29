@@ -41,10 +41,22 @@ a:hover {
     top: 50%;
     left: 50%;
     padding: 30px;
-    transform: rotate(30deg) scale(2,1);
+    transform: rotate(30deg) /* scale(2,1) */;
+    transition: 1s;
     transition: /* top */ /* background-color */ 2s;
 }
 /* .trans:hover {
     top: 20%; 
     background-color: red;
 } */
+.trans2 {
+    background-color: hotpink;
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    padding: 30px;
+    transform: rotate(-720deg);
+    transform-origin: top left;
+    transition: transform 3s; /* Transform este pentru a limita tranzitia doar pentru acest element */
+    transition-delay: 2s;
+}
