@@ -7,9 +7,12 @@
 </head>
 <body>
     <script>
-        setTimeout(sayHello, 3000);
+        var message = "Hello JavaScript!";
+        var timeout = 3000;
+        var isNight = true;
+        setTimeout(sayHello, timeout);
         function sayHello() {
-            alert("Hello JavaScript!");
+            alert(message);
         }
     </script>
 </body>
