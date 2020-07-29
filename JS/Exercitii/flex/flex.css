@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+nav {
+    background-color: darkgray;
+    display: flex;
+    justify-content: space-around;
+}
+div:first-child{
+    background-color: sandybrown;
+}
+div:nth-child(2){
+    background-color: skyblue;
+}
+div:last-child{
+    background-color: lightcoral;
+}
