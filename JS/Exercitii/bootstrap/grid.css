@@ -1,0 +1,9 @@
+.row div:first-child {
+    background-color: lightcoral;
+}
+.row div:nth-child(2) {
+    background-color: lightgoldenrodyellow;
+}
+.row div:last-child {
+    background-color: lightgreen;   
+}

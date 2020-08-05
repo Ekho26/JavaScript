@@ -1,0 +1,16 @@
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(249, 115, 2);
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    /* margin-top: 2em; */
+}
+input {
+    margin: 1em 0;
+}
+input[type="submit"] {
+    background-color: rgb(249, 115, 2);
+}
