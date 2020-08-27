@@ -1,8 +1,24 @@
-$color: orange;
+@import 'var';
+
+$base_color: rgb(19, 231, 47);
+
+nav {
+    ul {
+        background-color: gainsboro;
+        li {
+            display: inline-block;
+        }
+        a {
+            text-decoration: none;
+            color: $secondary_color;
+            padding: $default_padding * 2;
+        }
+    }
+}
 
 button {
-  background-color: $color;
+  background-color: $base_color;
 }
 h1 {
-  color: $color;
+  color: $base_color;
 }
