@@ -1,0 +1,26 @@
+h1::before {
+    content: "H1. ";
+}
+h1::after {
+    content: ".";
+}
+a {
+    text-decoration: none;
+    color: teal;
+    font-size: 1.3em;
+    font-family: 'Acme', sans-serif;
+}
+a:hover::after {
+    content: "";
+    display: block;
+    height: 2px;
+    background-color: darkorchid;
+    width: 0em;
+    animation-name: underscore;
+    animation-duration: 1s;
+}
+@keyframes underscore {
+    to {
+        width: 3.6em;
+    }
+}
