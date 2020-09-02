@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border: 2px solid lightskyblue;
+    perspective: 8px;
+    perspective-origin: 50%;
+}
+.back {
+    transform: translateZ(0px);
+}
+.front {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translateZ(3px) scale(0.625);
+}
+.gear {
+    position: absolute;
+    top: 50%;
+    right: 40%;
+    transform: translateZ(4px) scale(0.5);
+}
+.gear img {
+    width: 200px;
+}
+h1 {
+    font-size: 35px;
+}

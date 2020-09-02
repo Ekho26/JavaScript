@@ -1,0 +1,30 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+main {
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    background-image: url('1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title {
+   font-family: 'Libre Baskerville', serif;
+   font-size: 7em; 
+   font-weight: 900;
+   color: white;
+}
+.enter {
+    font-family: sans-serif;
+    color: white;
+    font-size: 2em;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 3em;
+}

@@ -9,18 +9,27 @@ a {
     color: teal;
     font-size: 1.3em;
     font-family: 'Acme', sans-serif;
+    position: absolute;
 }
-a:hover::after {
+a::after {
     content: "";
     display: block;
     height: 2px;
     background-color: darkorchid;
-    width: 0em;
-    animation-name: underscore;
-    animation-duration: 1s;
+    transform: scaleX(0);
+    transition: transform 1s;
+    width: 100%;
+    /* avem a:hover::after { si intre paranteze tot blocul de cod fara partea de transform } */
+    /* Daca vrem sa facem cu animatii, avem exemplul de mai jos */
+    /* width: 0em; */
+    /* animation-name: underscore;
+    animation-duration: 1s; */
 }
-@keyframes underscore {
+a:hover::after {
+    transform: scaleX(1)
+}
+/* @keyframes underscore {
     to {
         width: 3.6em;
     }
-}
+} */
