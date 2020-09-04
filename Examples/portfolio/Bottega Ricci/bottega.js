@@ -11,6 +11,11 @@ function spanTitle() {
     );
     title.innerHTML = '';
     spans.forEach(span => title.appendChild(span));
+    return spans;
 }
-
-spanTitle();
+let spans = spanTitle();
+spans.sort(function (){
+    return 0.5 - Math.random()
+});
+let spansToAnimate = spans.slice(0, 6);
+spansToAnimate.forEach(span => span.classList.add('bounce'));

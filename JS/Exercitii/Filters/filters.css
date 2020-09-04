@@ -1,0 +1,35 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+div {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('utopia.jpg');
+    background-size: cover;
+    animation-name: effect;
+    animation-duration: 5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes effect {
+    from {
+        filter: hue-rotate(0deg);
+    }
+    to {
+        filter: hue-rotate(180deg);
+    }
+}
+
+/* blur(px)
+brightness(%)
+contrast(%)
+drop-shadow(px)
+grayscale(%)
+hue-rotate(deg)
+invert(%)
+opacity(%)
+saturate(%)
+sepia(%) */
