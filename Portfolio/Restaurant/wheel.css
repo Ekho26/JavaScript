@@ -1,0 +1,27 @@
+.wheel {
+    --size: 5em;
+    width: var(--size);
+    height: var(--size);
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    top: calc(var(--size) / 2);
+    z-index: 0;
+}
+
+.wheel .arrow {
+    width: calc(var(--size) / 4);
+    height: calc(var(--size) / 4);
+    border-left: medium solid var(--blue-color);
+    border-bottom: medium solid var(--blue-color);
+    transform: rotate(-45deg);
+    position: relative;
+    top: calc(var(--size) / 8);
+}
+.wheel:hover .arrow {
+    opacity: 0.8;
+} 

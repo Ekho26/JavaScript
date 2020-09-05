@@ -1,0 +1,104 @@
+*, *::before, *::after {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    --blue-color: #33baaf;
+    --orange-color: #f6af33;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    opacity: .8;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 5em;
+}
+
+.name {
+    font-family: 'Amatic SC', cursive;
+    font-size: 2.1em;
+    text-transform: capitalize;
+    font-weight: bold;
+    color: var(--orange-color);
+}
+
+.welcome {
+    background-image: url('Img/bg-header.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+h1 {
+    font-family: 'Amatic SC';
+    font-weight: bold;
+    text-align: center;
+    line-height: 2.5em;
+    padding: 0.9em 0;
+    z-index: 1;
+    position: relative;
+}
+h1 span:first-child {
+    display: block;
+    color: var(--blue-color);
+    font-size: 2em;
+}
+h1 span:last-child {
+    display: block;
+    color: var(--orange-color);
+    font-size: 3em;
+}
+
+h1 span:first-child::before, h1 span:first-child::after {
+    content: ' - ';
+}
+
+p {
+    font-family: 'Alegreya', serif;
+    font-size: 1.2em;
+    padding: 0.5em 1em;
+}
+
+.ambiance {
+    background-image: url('Img/ambiance.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+}
+
+body::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: var(--blue-color);
+}
+
+body::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: var(--orange-color);
+}
+
+body::-webkit-scrollbar {
+    width: 8px;
+    background-color: #f5f5f5;
+}
