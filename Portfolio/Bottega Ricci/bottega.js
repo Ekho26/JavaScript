@@ -13,6 +13,10 @@ function spanTitle() {
     spans.forEach(span => title.appendChild(span));
     return spans;
 }
+function shuffle() {
+    
+}
+
 let spans = spanTitle();
 spans.sort(function (){
     return 0.5 - Math.random()
