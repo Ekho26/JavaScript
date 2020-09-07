@@ -21,5 +21,5 @@ let spans = spanTitle();
 spans.sort(function (){
     return 0.5 - Math.random()
 });
-let spansToAnimate = spans.slice(0, 6);
+let spansToAnimate = spans.slice(0, 3);
 spansToAnimate.forEach(span => span.classList.add('bounce'));

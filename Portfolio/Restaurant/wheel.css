@@ -13,7 +13,7 @@
     z-index: 0;
 }
 
-.wheel .arrow {
+.wheel .arrow { 
     width: calc(var(--size) / 4);
     height: calc(var(--size) / 4);
     border-left: medium solid var(--blue-color);

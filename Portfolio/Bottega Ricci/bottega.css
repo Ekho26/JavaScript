@@ -21,7 +21,7 @@
     align-items: center;
     justify-content: center;
     z-index: 1;
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 .portfolio {
     z-index: 0;
