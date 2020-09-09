@@ -1,0 +1,92 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.welcome, .portfolio {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.welcome {
+    background-color: black;
+    background-image: url('img/1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    /* visibility: hidden; */
+}
+.portfolio {
+    z-index: 0;
+    background-color:rgb(205, 92, 92);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pictures {
+    width: 80%;
+    text-align: center;
+}
+.portfolio .pictures img {
+    width: 200px;
+    height: 300px;
+}
+.title {
+    margin-top: 1em;
+   font-family: 'Libre Baskerville', serif;
+   font-size: 10em; 
+   font-weight: 900;
+   color: white;
+}
+.enter, .back {
+    font-family: sans-serif;
+    color: white;
+    font-size: 3em;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 2em;
+    position: relative;
+    cursor: pointer;
+}
+.enter::after, .back::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    background-color: black;
+    width: 0;
+    transition-duration: 0.5s;
+}
+.enter:hover::after, .back:hover::after {
+    width: 100%;
+    background-color: white;
+}
+@keyframes bounce {
+    from {
+        top: 0px;
+        color: white;
+    }
+    to {
+        top: -0.7em;
+        color: black;
+    }
+}
+.title span {
+    position: relative;
+
+}
+.title span.bounce {
+    animation-name: bounce;
+    animation-duration: 0.5s;
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+}
