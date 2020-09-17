@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mustache</title>
     <script src="mustache.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.common.dev.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
 </head>
 <body>
-    <div id="app">
-        {{ message }}
+    <div id='app'>
+        <span v-bind:class="counter > 10 ? 'mare' : 'mic'"></span>
+        {{ message + 'Yes I do' }}
+        {{ 'counter is ' + (counter + 1) }}
+        {{ reversedMessage }}
+        {{ counter> 10 ? 'mare' : 'mic' }}
     </div>
 </body>
 </html>
