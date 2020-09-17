@@ -22,8 +22,21 @@ class Student extends Person {
     }
 }
 
-var personRadu = new Person('Radu', 33, 170);
-var studentAndreea = new Student('Andreea', 26, 168, 'JavaScript');
+class Teacher extends Person {
+    constructor (name, age, height, specialty){
+        super(name, age, height, specialty);
+        this.specialty = specialty;
+    }
+    sayHello(){
+        super.sayHello();
+        console.log(`I'm a teacher and I teach ${this.specialty}`);
+    }
+}
 
-personRadu.sayHello();
-studentAndreea.sayHello();
+var Radu = new Person('Radu', 33, 170);
+var Andreea = new Student('Andreea', 26, 168, 'JavaScript');
+var chuckNorris = new Teacher('Chuck Norris', 40, 175, 'Vue.JS');
+
+Radu.sayHello();
+Andreea.sayHello();
+chuckNorris.sayHello();
