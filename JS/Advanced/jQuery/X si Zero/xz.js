@@ -33,4 +33,3 @@ function checkComplete(cells) {
         $('.win').addClass('visible');
     }
 }
-
