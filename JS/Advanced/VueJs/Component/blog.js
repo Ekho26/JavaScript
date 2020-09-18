@@ -17,6 +17,7 @@ Vue.component('button-counter', {
     methods: {
         click(){
             this.clicks++;
+            $emit('counter-clicked', this.click);
         }
     }
 });
