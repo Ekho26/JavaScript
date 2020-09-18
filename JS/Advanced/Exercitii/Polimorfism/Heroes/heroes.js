@@ -23,7 +23,7 @@ class Superman extends Hero {
     }
     receiveHit(energy) {
         if (energy > 10){
-            this.life -= 0.1*energy;
+            this.life -= 0.1 * energy;
         }
     }
 }
@@ -41,7 +41,7 @@ class Mage extends Hero {
     }
     receiveHit(energy) {
         this.life -= 10;
-        this.mana += energy *0.5;
+        this.mana += energy * 0.5;
     }
 }
 
@@ -63,14 +63,10 @@ class Undead extends Hero {
 var clark = new Superman('Clark Kent', 1000, 1000);
 var xevras = new Mage('Xevras', 100, 300);
 
-clark.firePrimary();
-xevras.receiveHit();
-xevras.firePrimary();
-clark.receiveHit();
-xevras.fireSecondary();
-clark.receiveHit();
-clark.fireSecondary();
-xevras.receiveHit();
+clark.firePrimary(xevras);
+xevras.firePrimary(clark);
+xevras.fireSecondary(clark);
+clark.fireSecondary(xevras);
 
 console.log(clark);
 console.log(xevras);
