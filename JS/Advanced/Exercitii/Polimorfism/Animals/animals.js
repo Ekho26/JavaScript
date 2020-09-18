@@ -25,9 +25,9 @@ class Cat extends Animal {
     }
 }
 
-var sasha = new Dog('Sasha', 2, 'Woof!');
-var duck = new Duck('Duck', 1, 'Quack!');
-var cat = new Cat('Cat', 2, 'Meow!');
+let sasha = new Dog('Sasha', 2, 'Woof!');
+let duck = new Duck('Duck', 1, 'Quack!');
+let cat = new Cat('Cat', 2, 'Meow!');
 
 sasha.speak();
 duck.speak();

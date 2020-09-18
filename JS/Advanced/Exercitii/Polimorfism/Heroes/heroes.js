@@ -4,37 +4,44 @@ class Hero {
         this.life = life;
         this.mana = mana;
     }
-    firePrimary(){}
-    fireSecondary(){}
-    receiveHit(){}
+    firePrimary(anotherHero){}
+    fireSecondary(anotherHero){}
+    receiveHit(energy){}
     isAlive(){
         return this.life > 0;
     }
 }
 
 class Superman extends Hero {
-    firePrimary() {
+    firePrimary(anotherHero) {
         this.mana -= 5;
+        anotherHero.receiveHit(30);
     }
-    firesecondary() {
+    firesecondary(anotherHero) {
         this.mana -= 1;
+        anotherHero.receiveHit(5);
     }
-    receiveHit() {
-        this.life -= 0.1;
+    receiveHit(energy) {
+        if (energy > 10){
+            this.life -= 0.1*energy;
+        }
     }
 }
 
 class Mage extends Hero {
-    firePrimary() {
+    firePrimary(anotherHero) {
         this.mana -= 20;
         this.life += 2;
+        anotherHero.receiveHit(15);
     }
-    fireSecondary() {
+    fireSecondary(anotherHero) {
         this.mana -= 10;
         this.life += 1;
+        anotherHero.receiveHit(5);
     }
-    receiveHit() {
+    receiveHit(energy) {
         this.life -= 10;
+        this.mana += energy *0.5;
     }
 }
 
