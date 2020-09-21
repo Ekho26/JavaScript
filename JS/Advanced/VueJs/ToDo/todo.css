@@ -69,9 +69,48 @@ button {
 }
 
 input[type='text']{
+    font-size: 1em;
     background-color: white;
     border: 1px solid #e0e0e0;
     border-radius: 5px;
     padding: 0.5em;
     width: 75%;
+}
+
+.task{
+    display: flex;
+    justify-content: space-between;
+}
+
+.controls{
+    display: flex;
+}
+
+.controls {
+    border: 0.1em;
+    width: 1.2em;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    margin-right: 0.4em;
+}
+
+.check{
+    background-color: rgb(32, 178, 115);
+    margin-right: 0.2em;
+}
+
+.delete{
+    background-color: rgb(225, 94, 94);
+}
+
+.task.done .title {
+    color: #888;
+    text-decoration: line-through;
+}
+
+.filters {
+    text-align: right;
+    margin-bottom: 0.5em;
 }
