@@ -82,25 +82,31 @@ input[type='text']{
     justify-content: space-between;
 }
 
-.controls {
+.controls{
     display: flex;
+}
+
+.controls {
     border: 0.1em;
     width: 1.2em;
     color: white;
     text-align: center;
     cursor: pointer;
     user-select: none;
+    margin-right: 0.4em;
 }
 
 .check{
     background-color: rgb(32, 178, 115);
+    margin-right: 0.2em;
 }
 
 .delete{
-    background-color: rgb(225, 94, 94);
+    color: black;
+    opacity: 0.3;
 }
 
-.task .done .title {
+.task.done .title {
     color: #888;
     text-decoration: line-through;
 }
@@ -108,4 +114,16 @@ input[type='text']{
 .filters {
     text-align: right;
     margin-bottom: 0.5em;
+}
+
+.color {
+    width: 0.5em;
+    height: 1.2em;
+    opacity: 0.6;
+    border-radius: 0.2em;
+    margin-right: 0.5em;
+}
+
+.color_and_title {
+    display: flex;
 }

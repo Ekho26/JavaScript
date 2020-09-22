@@ -3,7 +3,7 @@ import { Todo } from '../Class/todo.js';
 Vue.component('todo-list',{
     template: `
     <div class="todo-list">
-        <h1>To do:</h1>
+        <h1> {{list_name}} </h1>
         <div class='filters'>
             <label>Show Done:</label>
             <input type='checkbox' v-model='showDone'>
@@ -12,8 +12,7 @@ Vue.component('todo-list',{
             <task 
                 v-if='showDone || !todo.isDone'
                 v-for='(todo, index) in todos'
-                :title='todo.title'
-                :is-done='todo.isDone'
+                :todo='todo'
                 @checked='checkTodo(index)'
                 @deleted='deleteTodo(index)'>
             </task>
@@ -35,6 +34,7 @@ Vue.component('todo-list',{
             showDone: true
         }
     },
+    props: [ 'list_name' ],
     methods: {
         saveTodo(){
             // adaugam valoarea din task in lista de todo
