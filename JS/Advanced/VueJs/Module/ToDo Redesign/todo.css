@@ -1,0 +1,116 @@
+*,*::before,*::after {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+#app {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 2em;
+    margin-top: 2em;
+    background-color: #e7e3e3;
+    font-family: sans-serif;
+    width: 35vw;
+}
+
+h1 {
+    margin-bottom: .5em;
+    font-size: 1.8em;
+}
+
+li {
+    list-style: none;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    padding: 0.5em;
+}
+
+li:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+li:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.newTask {
+    margin-top: 0.5em;
+}
+
+hr {
+    border: 0.3px solid lightgrey;
+    margin-top: 10px;
+}
+
+.saveTask {
+    display: flex;
+    justify-content: flex-end;
+}
+
+button {
+    margin-top: 0.5em;
+    font-size: 1.1em;
+    border: 1px solid rgb(88, 137, 180);
+    background-color: rgb(51, 121, 182);
+    border-radius: 5px;
+    color: white;
+    padding: 0.4em;
+}
+
+input[type='text']{
+    font-size: 1em;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 0.5em;
+    width: 75%;
+}
+
+.task{
+    display: flex;
+    justify-content: space-between;
+}
+
+.controls{
+    display: flex;
+}
+
+.controls {
+    border: 0.1em;
+    width: 1.2em;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    margin-right: 0.4em;
+}
+
+.check{
+    background-color: rgb(32, 178, 115);
+    margin-right: 0.2em;
+}
+
+.delete{
+    background-color: rgb(225, 94, 94);
+}
+
+.task.done .title {
+    color: #888;
+    text-decoration: line-through;
+}
+
+.filters {
+    text-align: right;
+    margin-bottom: 0.5em;
+}
