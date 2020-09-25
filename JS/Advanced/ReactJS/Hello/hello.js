@@ -20,13 +20,13 @@ class Welcome extends React.Component {
   render() {
     return (
       <h1>
-        { this.params.sayHello ? 
+        {this.params.sayHello ? 
           <div>Hello, {this.params.name} !</div>
          : 
           <div>Good bye</div>
         }
-        <div>{ new Date().toISOString() }</div>
-        <a href={ this.params.uri }>Learn more about React</a>
+        <div>{new Date().toISOString()}</div>
+        <a href={this.params.uri}>Learn more about React</a>
       </h1>
     )
   }
