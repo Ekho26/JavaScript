@@ -1,12 +1,11 @@
 import {List, ListItem, ListItemText} from '@material-ui/core';
 import React from 'react';
-import './Todo.css';
 import db from './firebase';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 function Todo(props) {
     return (
-        <List className='todoList'>
+        <List>
             <ListItem>
                 <ListItemText primary={props.todo} secondary="" />
             </ListItem>
