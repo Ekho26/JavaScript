@@ -1,7 +1,10 @@
-import {} from 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js';
-import {} from './Component/task.js';
-import {} from './Component/todo-list.js';
+import "https://unpkg.com/vue/dist/vue.js";
+import "https://unpkg.com/vuex/dist/vuex.js";
+import './Component/task.js';
+import './Component/todolist.js';
+import store from './Store/store.js'
 
 var app = new Vue({
-    el:'#app'
+    el:'#app',
+    store
 });

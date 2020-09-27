@@ -1,4 +1,4 @@
-import { Todo } from '../class/Todo.js';
+import store from '../Store/store.js';
 
 Vue.component('todo-list', {
     template: `
@@ -29,30 +29,33 @@ Vue.component('todo-list', {
     props: [ 'list_name' ],
     data() {
         return {
-            todos: [
-                new Todo('Something to do')
-            ],
             task: '',
-            showDone: true
         }
     },
     methods: {
         saveTodo() {
-            // adaugam valoarea din task in lista de todo
-            this.todos.push(new Todo(this.task));
+            this.$store.commit('saveTodo', this.task)
             // resetam task-ul
             this.task = '';
         },
         checkTodo(index) {
-            this.todos[index].switchDone();
+            this.$store.commit('checkTodo', index)
         },
         deleteTodo(index) {
-            this.todos.splice(index, 1);
+            this.$store.commit('deleteTodo', index)
         }
     },
     computed: {
         filteredTodos() {
-            return this.todos.filter(todo => this.showDone || !todo.isDone)
+            return this.$store.getters.filteredTodos
+        },
+        showDone: {
+            get() {
+                return this.$store.state.showDone
+            },
+            set(value) {
+                this.$store.commit('changeShowDone', value)
+            }
         }
-    },
+    }
 });
