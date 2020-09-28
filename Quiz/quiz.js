@@ -150,7 +150,7 @@ const quiz = {
             </div>
         </div>
     `,
-    methods: 
+    methods: {
         answerQuestion: (answer) => store.commit('answerQuestion', answer),
         next: () => store.commit('next'),
         back: () => store.commit('back')
