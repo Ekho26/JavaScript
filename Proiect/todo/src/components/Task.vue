@@ -1,4 +1,7 @@
 <template>
+<<<<<<< HEAD
+  
+=======
   <li :class="{ done: task.isDone }" class="task" @click="$emit('checked')">
     <div class="title_container">
       <div class="color" v-bind:style="{ backgroundColor: task.color }"></div>
@@ -10,10 +13,20 @@
       </div>
     </div>
   </li>
+>>>>>>> d4df58a3f0c4d5ff74260d95a6dcb4128078c8ae
 </template>
 
 <script>
 export default {
+<<<<<<< HEAD
+
+}
+</script>
+
+<style scoped>
+
+</style>
+=======
   name: "Task",
   props: ["task"],
 };
@@ -64,3 +77,4 @@ li .color {
   text-decoration: line-through;
 }
 </style>
+>>>>>>> d4df58a3f0c4d5ff74260d95a6dcb4128078c8ae
