@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="transition.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script type="module" src="transition.js"></script>
+</head>
+<body>
+    <div id="app">
+        <transition name="fade" appear>
+            <div v-if="show">Now you see me</div>
+        </transition>
+        <transition name="bounce" appear>
+            <div v-if="show">Now you see me</div>
+        </transition>
+        <transition name="fade" mode="out-in">
+            <button v-if="isOn" @click="isOn = !isOn" key="On">On</button>
+            <button v-else @click="isOn = !isOn" key="Off">Off</button>
+        </transition>
+        <input type="button" value="Press me" @click="show = !show">
+        <transition-group name="fade" tag="ul">
+            <span v-for="number in numbers" key="number">{{number}}</span>
+        </transition-group>
+        <input type="button" value="Add" @click="add">
+        <input type="button" value="Remove" @click="remove">
+    </div>
+</body>
+</html>
