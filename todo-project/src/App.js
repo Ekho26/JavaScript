@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Todo from './Todo';
+import Todo from './Todo.js';
 import {Button, FormControl, InputLabel, Input} from '@material-ui/core';
 import './App.css';
 import db from './firebase';
@@ -23,9 +23,6 @@ function App() {
     // prevents the page from refreshing when we put new item
     event.preventDefault();
     // this will fire up when we click the button Add todo
-
-
-
     setTodos([...todos, input]);
     // Cleans the input after we press the submit button
     setInput('');
@@ -40,10 +37,10 @@ function App() {
       {/* <input value = {input} onChange = {event => setInput(event.target.value)}/> */}
       {/* using Material-Ui */}
       <FormControl>
-        <InputLabel>Task here</InputLabel>
+        <InputLabel>ToDo</InputLabel>
         <Input value = {input} onChange = {event => setInput(event.target.value)}/>
       </FormControl>
-      <Button disabled = {!input} type= 'submit' onClick ={addTodo} variant="contained" color="primary">Add Todo</Button>
+      <Button disabled = {!input} type= 'submit' onClick ={addTodo} variant="contained" color="primary">Add Task</Button>
       {/* Without style */}
       {/* <button type= 'submit' onClick ={addTodo}>Add Todo</button> */}
       </form>

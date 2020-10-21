@@ -9,10 +9,10 @@ function Todo(props) {
             <ListItem>
                 <ListItemAvatar>
                 </ListItemAvatar>
-            <ListItemText primary = {props.text} secondary = 'Todo...'/>
+            <ListItemText primary = {props.text} secondary = 'Hurry Up!'/>
             </ListItem>
         </List>
     )
 }
 
-export default Todo
+export default Todo;
