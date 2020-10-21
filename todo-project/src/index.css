@@ -5,7 +5,15 @@ html {
 *,*:before,*:after{
   box-sizing: inherit;
 }
-
+h1{
+  display: block;
+  font-size: 2em;
+  margin-block-start: 3em;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+}
 body {
   margin: 0;
   padding: 0;
