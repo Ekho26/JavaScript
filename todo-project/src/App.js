@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Todo from './Todo.js';
+import Todo from './components/Todo.js';
 import {Button, FormControl, InputLabel, Input} from '@material-ui/core';
 import './App.css';
-import db from './firebase';
+import dataBase from './firebase';
 
 function App() {
   // Hooks 
@@ -14,7 +14,7 @@ function App() {
 
   // We need to get the data from database
   useEffect(() => {
-    db.collection('todos').onSnapshot(snapshot => {
+    dataBase.collection('todos').onSnapshot(snapshot => {
       setTodos(snapshot.docs.map(doc => doc.data().todo))
     })
   }, []);
@@ -23,6 +23,8 @@ function App() {
     // prevents the page from refreshing when we put new item
     event.preventDefault();
     // this will fire up when we click the button Add todo
+
+
     setTodos([...todos, input]);
     // Cleans the input after we press the submit button
     setInput('');
