@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Todo from './Todo';
 import dataBase from '../firebase';
-// import firebase from '../firebase';
 import {Button, FormControl, InputLabel, Input} from '@material-ui/core';
 
 function InputTask(){
