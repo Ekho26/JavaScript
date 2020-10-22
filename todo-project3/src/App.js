@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import uuid from 'react-uuid';
-import dataBase from './firebase';
 import InputComponent from './formComponent';
 import TodoListComponent from './todoListComponent';
 
@@ -9,23 +8,9 @@ function App() {
   const [inputValue, setInputValue] = useState('');
   const [todos, setTodos] = useState([]);
 
-  useEffect(() => {
-    dataBase.collection('todos')
-            .onSnapshot(snapshot => {
-              setTodos(
-                snapshot.docs
-                        .map(doc => doc.data().todo)
-              )
-            })
-  }, []);
-
   const handleSubmit = (event) => {
   
     event.preventDefault();
-
-    dataBase
-      .collection('todos')
-      .add({todo: inputValue});
     
     if(inputValue === '') return;
     setTodos([...todos, {id: uuid(), val: inputValue, done: false}]);
