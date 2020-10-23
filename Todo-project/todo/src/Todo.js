@@ -9,11 +9,9 @@ function Todo(props) {
             <ListItem>
                 <ListItemText primary={props.todo.todo} secondary='Task'/>
             </ListItem>
-            <Button onClick={event => {
+            <Button onClick={event => 
                 db.collection('todos').doc(props.todo.id).delete()
-            }}>
-
-            </Button>
+            }/>
         </List>
     )
 }

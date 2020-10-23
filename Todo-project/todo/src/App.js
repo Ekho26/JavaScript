@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { FormControl, Button, InputLabel, Input } from '@material-ui/core'
-import PostAddIcon from '@material-ui/icons/PostAdd'
+import PostAddIcon from '@material-ui/icons/PostAddIcon'
 import './App.css'
 import Todo from './Todo.js'
 import db from './firebase'
@@ -14,12 +14,11 @@ function App() {
 
   // when the app loads, we need to listen 
   // to the database and fetch new todos as they get added/removed
-  useEffect(() => {
-    // this code loads when the app loads
-    db.collection('todos').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
-      setTodos(snapshot.docs.map(doc => doc.data().todo))
-    })
-  }, [])
+  // useEffect(() => {
+  //  db.collection('todos').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
+  //    setTodos(snapshot.docs.map(doc => ({id: doc.id, doc.data().todo})))
+  //  }) 
+  // }, [])
 
   const addTodo = (event) => {
     // prevents the refreshing of the page when we add items to the list
