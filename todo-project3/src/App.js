@@ -5,8 +5,8 @@ import TodoListComponent from './todoListComponent';
 
 function App() {
 
-  const [inputValue, setInputValue] = useState('');
   const [todos, setTodos] = useState([]);
+  const [inputValue, setInputValue] = useState('');
 
   const handleSubmit = (event) => {
   
