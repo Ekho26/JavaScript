@@ -4,7 +4,6 @@ import { Button, List, ListItem, ListItemText, Modal } from '@material-ui/core';
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone';
 import CheckBoxTwoToneIcon from '@material-ui/icons/CheckBoxTwoTone';
-import './Todo.css';
 import db from './firebase';
 
 const useStyles = makeStyles((theme) => ({
