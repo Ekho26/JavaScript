@@ -1,14 +1,26 @@
 import React, { useState, useEffect} from 'react';
-import Todo from './Todo.js';
-import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
-import LibraryAddCheckTwoToneIcon from '@material-ui/icons/LibraryAddCheckTwoTone';
-import './App.css';
-import firebase from 'firebase';
-import db from './firebase';
+import { makeStyles } from '@material-ui/core/styles';
+import InputComponent from './InputComponent.js';
+import TodoListComponent from './TodoListComponent.js';
+import HeaderComponent from './HeaderComponent';
+import Container from '@material-ui/core/Container';
+import CSSBaseline from '@material-ui/core/CssBaseline';
+import db from './firebase.config';
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    marginTop: 30,
+    width: 600,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    borderRadius: 8,
+    padding: theme.spacing(2, 4, 3),
+  }
+}));
 
 function App() {
+  const classes = useStyles();
   const [todos, setTodos] = useState([]);
-  const [input, setInput] = useState('');
 
   useEffect(() =>{
     db.collection('todos').orderBy('timestamp', 'desc').onSnapshot(snapshot =>{
@@ -16,40 +28,23 @@ function App() {
     })
   }, []);
 
-  const addTodo =(event) =>{
-    event.preventDefault();
-    db.collection('todos').add({
-      todo: input,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp()
-    })
-    setInput('');
-  };
-
   return (
-    <div className="App">
-      <h1>
-        ToDo
-      </h1>
-      <form>
-        <FormControl>
-          <InputLabel>Add a task</InputLabel>
-          <Input value={input} 
-                 onChange={event => setInput(event.target.value)} />
-        </FormControl>
-        <Button disabled= {!input} 
-                type='submit' 
-                onClick={addTodo} 
-                variant="contained" 
-                color="primary">
-          <LibraryAddCheckTwoToneIcon />
-        </Button>
-      </form>
-      <ul>
-        {todos.map(todo => (
-          <Todo todo={todo} />
-        ))}
-      </ul>
-    </div>
+    <>
+      <CSSBaseline />
+      <Container maxWidth="sm"
+                 aligncontent="center"
+                 className={classes.container}
+                 >
+        <HeaderComponent/>
+        <InputComponent/>
+          <div>
+            {todos.map(todo => (
+              <TodoListComponent 
+                todo={todo}/>
+            ))}
+          </div>
+      </Container>
+    </>
   );
 };
 

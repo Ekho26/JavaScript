@@ -1,50 +1,93 @@
-import React, { useState, useEffect } from 'react';
-import uuid from 'react-uuid';
-import InputComponent from './formComponent';
+import React from 'react';
+import useState from 'react';
+// import uuid from 'react-uuid';
+import Container from '@material-ui/core/Container';
+import CSSBaseline from '@material-ui/core/CssBaseline';
+import HeaderComponent from './headerComponent';
 import TodoListComponent from './todoListComponent';
+
+// function useLocalStorageState(key, defaultValue ='') {
+//   const [state, setState] = React.useState(
+//     () => JSON.parse(window.localStorage.getItem(key)) || defaultValue,
+//   )
+//   React.useEffect(() => {
+//     window.localStorage.setItem(key, JSON.stringify(state))
+//   }, [key, state])
+//   return [state, setState]
+// }
 
 function App() {
 
-  const [todos, setTodos] = useState([]);
-  const [inputValue, setInputValue] = useState('');
+  // const [todos, setTodos] = useLocalStorageState('todos',[]);
+  // const [inputValue, setInputValue] = useState('');
 
-  const handleSubmit = (event) => {
+  // const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  // const [editTodoState, setEditTodoState] =useState({});
+
+  // const handleSubmit = (event) => {
   
-    event.preventDefault();
+  //   event.preventDefault();
     
-    if(inputValue === '') return;
-    setTodos([...todos, {id: uuid(), val: inputValue, done: false}]);
-    setInputValue('');
-  }
+  //   if(inputValue === '') return;
+  //   setTodos([...todos, {id: uuid(), val: inputValue, done: false}]);
+  //   setInputValue('');
+  // }
 
-  const handleChange =(event) =>{
-      setInputValue(event.target.value)
-  }
+  // const handleChange =(event) =>{
+  //     setInputValue(event.target.value)
+  // }
 
-  const deleteTodo = (todo) => {
-    setTodos(todos.filter((t) => t.id !== todo.id))
-  }
+  // const deleteTodo = (todo) => {
+  //   setTodos(todos.filter((t) => t.id !== todo.id))
+  // }
 
-  const markDone = (todo) => {
-    const newTodos = [...todos];
-    const t = newTodos.find(t => t.id === todo.id);
-    t.done = !t.done;
-    setTodos(newTodos);
-  }
+  // const editTodo = (todo) => {
+  //   setIsEditModalOpen(true);
+  //   setEditTodoState(todo);
+  // }
+
+  // const updateTodo= (event, todoText) => {
+  //   event.preventDefault();
+  //   const newTodos = [...todos];
+  //   const t = newTodos.find(t => t.id === editTodoState.id);
+  //   t.val = todoText;
+  //   setTodos(newTodos);
+  //   setEditTodoState({});
+  //   setIsEditModalOpen(false);
+  // }
+
+  // const markDone = (todo) => {
+  //   const newTodos = [...todos];
+  //   const t = newTodos.find(t => t.id === todo.id);
+  //   t.done = !t.done;
+  //   setTodos(newTodos);
+  // }
+  const [todos, setTodos] = useState([
+    {
+      val: 'todo 1',
+      priority: 'high',
+      due: '12th June'
+    }, {
+      val: 'todo 2',
+      priority: 'high',
+      due: '12th June'
+    }, {
+      val: 'todo 3',
+      priority: 'high',
+      due: '12th June'
+    }
+  ])
 
   return (
-    <div className='p-12 bg-gray-300 h-full text-sm'>
-      <InputComponent
-      value= {inputValue}
-      handleChange= {handleChange}
-      handleSubmit= {handleSubmit}
-      />
-      <TodoListComponent
-        todos = {todos}
-        deleteTodo = {deleteTodo}
-        markDone= {markDone}
-      />
-    </div>
+    <>
+      <CSSBaseline />
+      <Container>
+        <HeaderComponent/>
+        <TodoListComponent
+          todos={todos}
+        />
+      </Container>
+    </>
   );
 }
 
