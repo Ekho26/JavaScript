@@ -2,7 +2,7 @@ import React from 'react';
 import {Grid, Typography, Fab} from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 
-function HeaderComponent(props) {
+function HeaderComponent() {
 
     return (
         <Grid container justify="space-between"
