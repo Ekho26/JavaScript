@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Button, FormControl, InputLabel, Input, Grid } from '@material-ui/core';
 import LibraryAddCheckTwoToneIcon from '@material-ui/icons/LibraryAddCheckTwoTone';
 import firebase from 'firebase';
-import db from './firebase.config';
+import db from '../firebase.config';
 
 function InputComponent() {
   const [inputValue, setInputValue] = useState('');
@@ -12,7 +12,7 @@ function InputComponent() {
     if(inputValue === '') return;
     db.collection('todos').add({
       todo: inputValue,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     })
     setInputValue('');
   };

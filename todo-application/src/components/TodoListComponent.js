@@ -4,7 +4,7 @@ import { Button, Paper, ListItem, FormControl, ListItemText, Modal, InputLabel, 
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
 import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone';
 import CheckBoxTwoToneIcon from '@material-ui/icons/CheckBoxTwoTone';
-import db from './firebase.config';
+import db from '../firebase.config';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -13,8 +13,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.background.paper,
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
-    },
-    
+    }
   }));
 
 function TodoListComponent(props) {
@@ -27,11 +26,11 @@ function TodoListComponent(props) {
             todo: input
         }, { merge: true })
         setOpen(false)
-    }
+    };
     const deleteTodo = () =>{
         db.collection('todos').doc(props.todo.id)
                               .delete()
-    }
+    };
 
     return (
         <>

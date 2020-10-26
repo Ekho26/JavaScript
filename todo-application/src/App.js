@@ -1,11 +1,12 @@
 import React, { useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import InputComponent from './InputComponent.js';
-import TodoListComponent from './TodoListComponent.js';
-import HeaderComponent from './HeaderComponent';
+import InputComponent from './components/InputComponent.js';
+import TodoListComponent from './components/TodoListComponent.js';
+import HeaderComponent from './components/HeaderComponent';
 import Container from '@material-ui/core/Container';
 import CSSBaseline from '@material-ui/core/CssBaseline';
 import db from './firebase.config';
+import uuid from 'uuid';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -34,13 +35,15 @@ function App() {
       <Container maxWidth="sm"
                  aligncontent="center"
                  className={classes.container}
+                 key={uuid()}
                  >
-        <HeaderComponent/>
+        <HeaderComponent key={uuid()}/>
         <InputComponent/>
           <div>
             {todos.map(todo => (
               <TodoListComponent 
-                todo={todo}/>
+                todo={todo}
+                key={uuid()}/>
             ))}
           </div>
       </Container>
