@@ -9,7 +9,7 @@ function InputComponent() {
 
   const handleSubmit =(event) =>{
     event.preventDefault();
-    if(inputValue === '') return;
+    // if(inputValue === '') return;
     db.collection('todos').add({
       todo: inputValue,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -37,6 +37,7 @@ function InputComponent() {
                     </Grid>
                     <Grid item>
                         <Button type='submit' 
+                                disabled={!inputValue}
                                 onClick={handleSubmit} 
                                 variant="contained" 
                                 color="primary">

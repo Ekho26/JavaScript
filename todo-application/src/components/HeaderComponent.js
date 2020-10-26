@@ -6,17 +6,17 @@ import Typography from '@material-ui/core/Typography';
 function HeaderComponent() {
 
     return (
-            <AppBar position="static"
-                    style={{marginBottom:'1.5em', borderRadius:'4px'}}>
-                <Toolbar variant="dense" 
-                    style={{ justifyContent: "center"}} >
-                    <Typography 
-                        variant="h6" 
-                        color="inherit">
-                        Todo List
-                    </Typography>
-                </Toolbar>
-            </AppBar>
+        <AppBar position="static"
+                style={{marginBottom:'1.5em', borderRadius:'4px'}}>
+            <Toolbar variant="dense" 
+                style={{ justifyContent: "center"}} >
+                <Typography 
+                    variant="h6" 
+                    color="inherit">
+                    Todo List
+                </Typography>
+            </Toolbar>
+        </AppBar>
     )
 }
 

@@ -6,10 +6,24 @@ import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone';
 import CheckBoxTwoToneIcon from '@material-ui/icons/CheckBoxTwoTone';
 import db from '../firebase.config';
 
+function getModalStyle() {
+    const top = 50;
+    const left = 50;
+  
+    return {
+      top: `${top}%`,
+      left: `${left}%`,
+      transform: `translate(-${top}%, -${left}%)`,
+    };
+}
+
 const useStyles = makeStyles((theme) => ({
     modal: {
-      position: '',
-      width: 400,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      position: 'absolute',
+      width: 500,
       backgroundColor: theme.palette.background.paper,
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
@@ -18,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 function TodoListComponent(props) {
     const classes = useStyles();
+    const [modalStyle] = useState(getModalStyle);
     const [open, setOpen] =useState(false);
     const [input, setInput] = useState('');
 
@@ -32,21 +47,36 @@ function TodoListComponent(props) {
                               .delete()
     };
 
+    const body = (
+        <Grid container
+              style={modalStyle}
+              className={classes.modal}
+              direction='row'
+              justify='space-around'>
+            <FormControl>
+                <form>
+                    <InputLabel>Edit</InputLabel>
+                    <Input placeholder={props.todo.todo} 
+                            value={input}
+                            onChange={event => setInput(event.target.value)}/>
+                    <Button disabled={!input}
+                            style={{marginLeft: 35}}
+                            onClick= {updateTodo}
+                            color="primary"
+                            type='submit' 
+                            variant="contained">
+                        <CheckBoxTwoToneIcon />
+                    </Button>
+                </form>
+            </FormControl>
+        </Grid>
+    );
+
     return (
         <>
             <Modal open={open}
                    onClose={() => setOpen(false)}>
-                <div className={classes.modal}>
-                    <FormControl>
-                        <InputLabel>Edit</InputLabel>
-                        <Input placeholder={props.todo.todo} 
-                                    value={input}
-                                    onChange={event => setInput(event.target.value)}/>
-                        <Button onClick= {updateTodo}>
-                            <CheckBoxTwoToneIcon />
-                        </Button>
-                    </FormControl>
-                </div>
+                       {body}
             </Modal>
         
             <Grid container
