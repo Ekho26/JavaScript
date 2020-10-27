@@ -54,7 +54,7 @@ function App() {
       .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
         setTodos(
-          snapshot.docs.map((doc) => ({ id: doc.id, todo: doc.data().todo }))
+          snapshot.docs.map((doc) => ({ id: doc.id, todo: doc.data().todo}))
         );
       });
   }, []);

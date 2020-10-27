@@ -13,7 +13,7 @@ import db from "../firebase.config";
 function InputComponent() {
   const [inputValue, setInputValue] = useState("");
 
-  const handleSubmit = (event) => {
+  const addTodo = (event) => {
     event.preventDefault();
     // if(inputValue === '') return;
     db.collection("todos").add({
@@ -46,7 +46,7 @@ function InputComponent() {
             <Button
               type="submit"
               disabled={!inputValue}
-              onClick={handleSubmit}
+              onClick={addTodo}
               variant="contained"
               color="primary"
             >

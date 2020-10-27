@@ -65,6 +65,7 @@ function TodoListComponent(props) {
     );
     setOpen(false);
   };
+  
   const deleteTodo = () => {
     db.collection("todos").doc(props.todo.id).delete();
   };
