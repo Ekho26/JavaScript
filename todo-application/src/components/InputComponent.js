@@ -6,6 +6,7 @@ import {
   Input,
   Grid,
 } from "@material-ui/core";
+// import DatePickers from './DatePicker';
 import LibraryAddCheckTwoToneIcon from "@material-ui/icons/LibraryAddCheckTwoTone";
 import firebase from "firebase";
 import db from "../firebase.config";
@@ -40,6 +41,7 @@ function InputComponent() {
             <FormControl color='secondary'>
               <InputLabel color='secondary'>Add a task</InputLabel>
               <Input value={inputValue} onChange={handleChange} />
+              {/* <DatePickers/> */}
             </FormControl>
           </Grid>
           <Grid item>
