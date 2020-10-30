@@ -1,5 +1,14 @@
 import React from "react";
-import {Chip, Grid, Paper, Typography} from '@material-ui/core'
+import { 
+  IconButton,
+  ButtonGroup,
+  Chip,
+  Grid, 
+  Paper, 
+  Typography} from '@material-ui/core';
+  import DeleteIcon from "@material-ui/icons/Delete";
+  import EditIcon from "@material-ui/icons/Edit";
+  import CheckIcon from "@material-ui/icons/Check";
 
 function TodoListComponent(props) {
   return (
@@ -7,7 +16,7 @@ function TodoListComponent(props) {
           style={{marginTop: '1.5em'}}>
       {props.todos.map(todo => {
         return (
-          <Grid item>
+          <Grid item key={todo.id}>
             <Paper style={{padding: '0.8em'}} elevation={4}>
               <Grid container 
                     alignItems="center"
@@ -25,8 +34,23 @@ function TodoListComponent(props) {
                 </Grid>
               </Grid>
               <Typography variant="body2">
-                Due: {todo.due}
+                Due: {todo.dueDate}
               </Typography>
+              <ButtonGroup color="primary" 
+                           aria-label="outlined primary button group"
+                           variant="text"
+                           size="small"
+                           style={{paddingTop: "12px"}}>
+                <IconButton>
+                  <EditIcon/>
+                </IconButton >
+                <IconButton>
+                  <CheckIcon/>
+                </IconButton >
+                <IconButton>
+                  <DeleteIcon onClick={() => {props.handleDelete(todo.id)}}/>
+                </IconButton >
+              </ButtonGroup>
             </Paper>
           </Grid>
         );

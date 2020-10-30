@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
+import {useFormik} from 'formik';
 import uuid from 'react-uuid';
 import Container from '@material-ui/core/Container';
 import CSSBaseline from '@material-ui/core/CssBaseline';
@@ -7,79 +8,19 @@ import HeaderComponent from './HeaderComponent';
 import TodoListComponent from './TodoListComponent';
 import FormDialogComponent from './FormDialogComponent';
 
-function useLocalStorageState(key, defaultValue ='') {
-  const [state, setState] = React.useState(
-    () => JSON.parse(window.localStorage.getItem(key)) || defaultValue,
-  )
-  React.useEffect(() => {
-    window.localStorage.setItem(key, JSON.stringify(state))
-  }, [key, state])
-  return [state, setState]
-}
+// function useLocalStorageState(key, defaultValue ='') {
+//   const [state, setState] = React.useState(
+//     () => JSON.parse(window.localStorage.getItem(key)) || defaultValue,
+//   )
+//   React.useEffect(() => {
+//     window.localStorage.setItem(key, JSON.stringify(state))
+//   }, [key, state])
+//   return [state, setState]
+// }
 
 function App() {
 
-  // const [todos, setTodos] = useLocalStorageState('todos',[]);
-  // const [inputValue, setInputValue] = useState('');
-
-  // const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  // const [editTodoState, setEditTodoState] =useState({});
-
-  // const handleSubmit = (event) => {
-  
-  //   event.preventDefault();
-    
-  //   if(inputValue === '') return;
-  //   setTodos([...todos, {id: uuid(), val: inputValue, done: false}]);
-  //   setInputValue('');
-  // }
-
-  // const handleChange =(event) =>{
-  //     setInputValue(event.target.value)
-  // }
-
-  // const deleteTodo = (todo) => {
-  //   setTodos(todos.filter((t) => t.id !== todo.id))
-  // }
-
-  // const editTodo = (todo) => {
-  //   setIsEditModalOpen(true);
-  //   setEditTodoState(todo);
-  // }
-
-  // const updateTodo= (event, todoText) => {
-  //   event.preventDefault();
-  //   const newTodos = [...todos];
-  //   const t = newTodos.find(t => t.id === editTodoState.id);
-  //   t.val = todoText;
-  //   setTodos(newTodos);
-  //   setEditTodoState({});
-  //   setIsEditModalOpen(false);
-  // }
-
-  // const markDone = (todo) => {
-  //   const newTodos = [...todos];
-  //   const t = newTodos.find(t => t.id === todo.id);
-  //   t.done = !t.done;
-  //   setTodos(newTodos);
-  // }
-
-
-  const [todos, setTodos] = useState([
-    {
-      val: 'todo 1',
-      priority: 'high',
-      due: '12th June'
-    }, {
-      val: 'todo 2',
-      priority: 'high',
-      due: '12th June'
-    }, {
-      val: 'todo 3',
-      priority: 'high',
-      due: '12th June'
-    }
-  ])
+  const [todos, setTodos] = useState([]);
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -91,6 +32,38 @@ function App() {
     setIsDialogOpen(false);
   }
 
+  const handleSubmit = () => {
+    const {todoText, priority, dueDate} = formik.values;
+    setTodos([...todos, { 
+      id: uuid(), 
+      val:todoText, 
+      priority: priority, 
+      dueDate: dueDate
+    }]);
+    setIsDialogOpen(false);
+    formik.values.todoText= '';
+    formik.values.priority= 'Low';
+    formik.values.dueDate= getCurrentDate();
+  }
+
+  const handleDelete =(id) => {
+    const newTodos = [...todos];
+    setTodos(newTodos.filter(t => t.id !== id));
+  }
+
+  const getCurrentDate = () => {
+    const today = new Date();
+    return today.toISOString().slice(0,10)
+  }
+
+  const formik = useFormik({
+      initialValues: {
+          todoText: '',
+          priority: 'Low',
+          dueDate: getCurrentDate()
+      }
+  });
+
   return (
     <>
       <CSSBaseline />
@@ -99,11 +72,14 @@ function App() {
           handleDialogOpen={handleDialogOpen}
         />
         <TodoListComponent
-          todos={todos}/>
+          todos={todos}
+          handleDelete={handleDelete}/>
       </Container>
       <FormDialogComponent
         open={isDialogOpen}
-        handleClose={handleDialogClose}/>
+        handleClose={handleDialogClose}
+        handleSubmit={handleSubmit}
+        formik={formik}/>
     </>
   );
 }
