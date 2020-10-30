@@ -11,7 +11,6 @@ import {
   Input,
   Grid
 } from "@material-ui/core";
-// import DatePickers from './DatePicker';
 import DeleteForeverTwoToneIcon from "@material-ui/icons/DeleteForeverTwoTone";
 import ListAltTwoToneIcon from "@material-ui/icons/ListAltTwoTone";
 import CheckBoxTwoToneIcon from "@material-ui/icons/CheckBoxTwoTone";
@@ -72,17 +71,15 @@ function TodoListComponent(props) {
   };
 
   const bodyPaper = (
-    <>
-      <Paper className={classes.paper} elevation={2}>
-        <Grid container wrap="nowrap" spacing={2} style={{ padding: "0.3em" }}>
-          <Grid item xs>
-            <ListItem>
-              <ListItemText primary={props.todo.todo} secondary= 'Due Date:' />
-            </ListItem>
-          </Grid>
+    <Paper className={classes.paper} elevation={2}>
+      <Grid container wrap="nowrap" spacing={2} style={{ padding: "0.3em" }}>
+         <Grid item xs>
+          <ListItem>
+            <ListItemText primary={props.todo.todo} secondary= 'Due Date:' />
+          </ListItem>
         </Grid>
-      </Paper>
-    </>
+      </Grid>
+    </Paper>
   );
 
   const body = (

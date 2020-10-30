@@ -1,5 +1,5 @@
 import React from "react";
-import {Grid, Paper, Typography} from '@material-ui/core'
+import {Chip, Grid, Paper, Typography} from '@material-ui/core'
 
 function TodoListComponent(props) {
   return (
@@ -8,7 +8,7 @@ function TodoListComponent(props) {
       {props.todos.map(todo => {
         return (
           <Grid item>
-            <Paper style={{padding: '0.8em'}}>
+            <Paper style={{padding: '0.8em'}} elevation={4}>
               <Grid container 
                     alignItems="center"
                     justify="space-between">
@@ -18,7 +18,10 @@ function TodoListComponent(props) {
                   </Typography>
                 </Grid>
                 <Grid>
-                  {todo.priority}
+                  <Chip size="small"
+                        color="primary"
+                        label={todo.priority}
+                  />
                 </Grid>
               </Grid>
               <Typography variant="body2">

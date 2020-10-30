@@ -29,7 +29,7 @@ function App() {
       boxShadow: theme.shadows[5],
       borderRadius: 8,
       padding: theme.spacing(2, 4, 3),
-    },
+    }
   }));
 
   const classes = useStyles();

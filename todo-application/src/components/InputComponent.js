@@ -41,7 +41,6 @@ function InputComponent() {
             <FormControl color='secondary'>
               <InputLabel color='secondary'>Add a task</InputLabel>
               <Input value={inputValue} onChange={handleChange} />
-              {/* <DatePickers/> */}
             </FormControl>
           </Grid>
           <Grid item>

@@ -2,18 +2,22 @@ import React from 'react';
 import {Grid, Typography, Fab} from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 
-function HeaderComponent() {
+function HeaderComponent(props) {
 
     return (
-        <Grid container justify="space-between"
+        <Grid container 
+              justify="space-between"
               alignItems="center"
               style={{marginTop: '2em'}}>
             <Grid item>
-                <Typography variant="h4">TODO</Typography>
+                <Typography variant="h4">
+                    TODO
+                </Typography>
             </Grid>
             <Grid item>
                 <Fab size='medium'
-                     color='primary'>
+                     color='primary'
+                     onClick={props.handleDialogOpen}>
                     <AddIcon/>
                 </Fab>
             </Grid>
