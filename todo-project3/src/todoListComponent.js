@@ -22,7 +22,8 @@ function TodoListComponent(props) {
                     alignItems="center"
                     justify="space-between">
                 <Grid item>
-                  <Typography variant="h6">
+                  <Typography variant="h6"
+                              style={{textDecoration: todo.done? "line-through":"none"}}>
                     {todo.val}
                   </Typography>
                 </Grid>
@@ -30,7 +31,9 @@ function TodoListComponent(props) {
                   <Chip size="small"
                         color="primary"
                         label={todo.priority}
-                  />
+                        onClick={() => {
+                          props.handlePriorityClick(todo.priority)
+                        }}/>
                 </Grid>
               </Grid>
               <Typography variant="body2">
@@ -42,13 +45,18 @@ function TodoListComponent(props) {
                            size="small"
                            style={{paddingTop: "12px"}}>
                 <IconButton>
-                  <EditIcon/>
+                  <EditIcon onClick={() => {
+                    props.handleEditClick(todo)}}/>
                 </IconButton >
                 <IconButton>
-                  <CheckIcon/>
+                  <CheckIcon onClick={() => {
+                    props.handleMarkDone(todo)
+                  }}/>
                 </IconButton >
                 <IconButton>
-                  <DeleteIcon onClick={() => {props.handleDelete(todo.id)}}/>
+                  <DeleteIcon onClick={() => {
+                    props.handleDelete(todo.id)
+                  }}/>
                 </IconButton >
               </ButtonGroup>
             </Paper>

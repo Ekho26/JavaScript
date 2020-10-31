@@ -12,13 +12,13 @@ function FormDialogComponent(props) {
 
   return (
     <Dialog open={props.open} onClose={props.handleClose} style={{minWidth:"60vw"}}>
-      <DialogTitle>Add todo</DialogTitle>
+      <DialogTitle>{props.isEditMode? "Update ":"Add " } todo</DialogTitle>
       <DialogContent>
         <FormComponent formik={props.formik}/>
       </DialogContent>
       <DialogActions>
         <Button onClick={props.handleClose}>Cancel</Button>
-        <Button color="primary" onClick={props.handleSubmit} >Add</Button>
+        <Button color="primary" onClick={props.handleSubmit}>{props.isEditMode? "Update": "Add"}</Button>
       </DialogActions>
     </Dialog>
   );
