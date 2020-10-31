@@ -23,7 +23,7 @@ const FormComponent = ({formik}) => {
       </Grid>
       <Grid item>
         <FormControl variant="outlined" style={{ width: "100%" }}>
-          <InputLabel priorityLabel>Priority</InputLabel>
+          <InputLabel prioritylabel>Priority</InputLabel>
           <Select
             label="Priority"
             name="priority"
