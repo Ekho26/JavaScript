@@ -9,28 +9,28 @@ import HeaderComponent from './HeaderComponent';
 import TodoListComponent from './TodoListComponent';
 import FormDialogComponent from './FormDialogComponent';
 
-// function useLocalStorageState(key, defaultValue ='') {
-//   const [state, setState] = React.useState(
-//     () => JSON.parse(window.localStorage.getItem(key)) || defaultValue,
-//   )
-//   React.useEffect(() => {
-//     window.localStorage.setItem(key, JSON.stringify(state))
-//   }, [key, state])
-//   return [state, setState]
-// }
+function useLocalStorageState(key, defaultValue ='') {
+  const [state, setState] = React.useState(
+    () => JSON.parse(window.localStorage.getItem(key)) || defaultValue,
+  )
+  React.useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(state))
+  }, [key, state])
+  return [state, setState]
+}
 
 function App() {
 
-  const [todos, setTodos] = useState([]);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [filteredTodos, setFilteredTodos] = useState([]);
   const [isEditMode, setIsEditMode] = useState(false);
   const [editTodo, setEditTodo] = useState({});
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [todos, setTodos] = useState([]);
   const [priorityFilter, setPriorityFilter] = useState('');
-  const [filteredTodos, setFilteredTodos] = useState([]);
 
   useEffect(() => {
     setFilteredTodos(todos.filter(t => t.priority === priorityFilter))
-  },[filteredTodos])
+  },[priorityFilter])
 
   useEffect(() => {
     if(isEditMode){
@@ -69,7 +69,7 @@ function App() {
     if(!isEditMode){
       setTodos([...todos, { 
         id: uuid(), 
-        val:todoText, 
+        val: todoText, 
         priority: priority, 
         dueDate: dueDate
       }])
