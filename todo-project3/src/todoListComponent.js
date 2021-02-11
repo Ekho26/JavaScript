@@ -9,14 +9,22 @@ import {
   import DeleteIcon from "@material-ui/icons/Delete";
   import EditIcon from "@material-ui/icons/Edit";
   import CheckIcon from "@material-ui/icons/Check";
+  import {CSSTransition, TransitionGroup} from "react-transition-group";
+
+  const getTextDecor = (done) => {
+    return (done? 'line-throguh': 'none')
+  }
 
 function TodoListComponent(props) {
   return (
+    <TransitionGroup>
     <Grid container direction="column" spacing={2}
           style={{marginTop: '1.5em'}}>
       {props.todos.map(todo => {
         return (
-          <Grid item key={todo.id}>
+          <CSSTransition key={todo.id}
+            timeout={400}>
+          <Grid item>
             <Paper style={{padding: '0.8em'}} elevation={4}>
               <Grid container 
                     alignItems="center"
@@ -61,9 +69,11 @@ function TodoListComponent(props) {
               </ButtonGroup>
             </Paper>
           </Grid>
+          </CSSTransition>
         );
       })}
     </Grid>
+    </TransitionGroup>
   );
 }
 
