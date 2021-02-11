@@ -64,15 +64,16 @@ function App() {
     setEditTodo(todo);
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     const {todoText, priority, dueDate} = formik.values;
     if(!isEditMode){
       setTodos([...todos, { 
         id: uuid(), 
         val: todoText, 
         priority: priority, 
-        dueDate: dueDate
-      }])
+        dueDate: dueDate,
+        in: true
+      }]);
     } else {
       const newTodos = [...todos];
       const t = newTodos.find(t => t.id === editTodo.id);

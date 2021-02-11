@@ -10,7 +10,7 @@ import {
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import CheckIcon from "@material-ui/icons/Check";
-import Zoom from '@material-ui/core/Zoom';
+import Slide from '@material-ui/core/Slide';
 
 const getTextDecor = (done) => {
   return done ? "line-throguh" : "none";
@@ -26,7 +26,7 @@ function TodoListComponent(props) {
       >
         {props.todos.map((todo) => {
           return (
-            <Zoom in={true} style={{transitionDelay: '200ms'}}>
+            <Slide in={todo.in} timeout={300}>
               <Grid item key={todo.id}>
                 <Paper style={{ padding: "0.8em" }} elevation={4}>
                   <Grid container alignItems="center" justify="space-between">
@@ -83,7 +83,7 @@ function TodoListComponent(props) {
                   </ButtonGroup>
                 </Paper>
               </Grid>
-            </Zoom>
+            </Slide>
           );
         })}
       </Grid>
