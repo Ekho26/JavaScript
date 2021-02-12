@@ -8,6 +8,8 @@ import CSSBaseline from '@material-ui/core/CssBaseline';
 import HeaderComponent from './HeaderComponent';
 import TodoListComponent from './TodoListComponent';
 import FormDialogComponent from './FormDialogComponent';
+import Zoom from '@material-ui/core/Zoom';
+import {DragDropContext} from 'react-beautiful-dnd'
 
 function useLocalStorageState(key, defaultValue ='') {
   const [state, setState] = React.useState(
@@ -16,12 +18,17 @@ function useLocalStorageState(key, defaultValue ='') {
   React.useEffect(() => {
     window.localStorage.setItem(key, JSON.stringify(state))
   }, [key, state])
+
   return [state, setState]
+}
+
+const getCurrentDate = () => {
+  const today = new Date();
+  return today.toISOString().slice(0,10)
 }
 
 function App() {
 
-  const [filteredTodos, setFilteredTodos] = useState([]);
   const [isEditMode, setIsEditMode] = useState(false);
   const [editTodo, setEditTodo] = useState({});
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -29,8 +36,10 @@ function App() {
   const [priorityFilter, setPriorityFilter] = useState('');
 
   useEffect(() => {
-    setFilteredTodos(todos.filter(t => t.priority === priorityFilter))
-  },[priorityFilter])
+    if(!isDialogOpen){
+      if(isEditMode) setIsEditMode(false);
+    }
+  }, [isDialogOpen]);
 
   useEffect(() => {
     if(isEditMode){
@@ -43,12 +52,6 @@ function App() {
       formik.values.dueDate= getCurrentDate();
     }
   },[isEditMode]);
-
-  useEffect(() => {
-    if(!isDialogOpen){
-      if(isEditMode) setIsEditMode(false);
-    }
-  }, [isDialogOpen]);
 
   const handleDialogOpen = () => {
     setIsDialogOpen(true);
@@ -89,59 +92,75 @@ function App() {
     formik.values.priority= 'Low';
     formik.values.dueDate= getCurrentDate();
   }
-
+  
   const handleDelete =(id) => {
     const newTodos = [...todos];
-    setTodos(newTodos.filter(t => t.id !== id));
+    setTodos(newTodos.filter(t => t.id !== id))
   }
 
   const handleMarkDone = (todo) => {
     const newTodos =[...todos];
-    const t = newTodos.find(t => t.id === todo.id);
+    const t = newTodos.find(t => t.id = todo.id);
     t.done = !t.done;
     setTodos(newTodos);
   }
-
+  
   const handlePriorityClick = (priority) => {
     setPriorityFilter(priority)
   }
-
+  
   const handlePriorityFilterDelete = () => {
     setPriorityFilter('');
   }
-
-  const getCurrentDate = () => {
-    const today = new Date();
-    return today.toISOString().slice(0,10)
-  }
-
+  
   const formik = useFormik({
-      initialValues: {
-          todoText: '',
-          priority: 'Low',
-          dueDate: getCurrentDate()
-      }
+    initialValues: {
+        todoText: '',
+        priority: 'Low',
+        dueDate: getCurrentDate()
+    }
   });
+
+  const onDragEnd = (result) => {
+    const {source, destination, draggableId} = result;
+    if(!destination) return;
+    if(destination.index === source.index) return;
+    const t = todos.filter(todo => todo.id ===draggableId)[0]
+
+    const newTodos = [...todos];
+    newTodos.splice(source.index, 1);
+    newTodos.splice(destination.index, 0, t);
+    setTodos(newTodos)
+  }
 
   return (
     <>
       <CSSBaseline />
       <Container>
         <HeaderComponent
-          handleDialogOpen={handleDialogOpen}
+          handleFabClick={handleDialogOpen}
         />
-        {priorityFilter === ''?null:
+        {priorityFilter === ''?null:(
+          <Zoom in={priorityFilter!==''} timeout={400}>
           <Chip label={priorityFilter}
                 onDelete={handlePriorityFilterDelete}
                 color="secondary"
-                style={{marginTop:"1.2em"}}/>
+                style={{marginTop:"1.2em"}}
+                size='small'/>
+          </Zoom>
+        )
         }
-        <TodoListComponent
-          todos={priorityFilter === ''?todos:filteredTodos}
-          handleEditClick={handleEditClick}
-          handleDelete={handleDelete}
-          handleMarkDone={handleMarkDone}
-          handlePriorityClick={handlePriorityClick}/>
+        <DragDropContext
+          onDragEnd={onDragEnd}
+        >
+          <TodoListComponent
+            todos={todos}
+            priorityFilter={priorityFilter}
+            handleEditClick={handleEditClick}
+            handleDelete={handleDelete}
+            handleMarkDone={handleMarkDone}
+            handlePriorityClick={handlePriorityClick}/>
+        </DragDropContext>
       </Container>
       <FormDialogComponent
         open={isDialogOpen}
