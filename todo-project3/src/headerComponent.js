@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {StateContext} from "./context/StateContext"
 import {Grid, Typography, Fab} from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 
-function HeaderComponent(props) {
+function HeaderComponent({handleFabClick}) {
+    const state = useContext(StateContext)
+    const [isDialogOpen, setIsDialogOpen] = state.isDialogOpen
 
     return (
         <Grid container 
@@ -17,7 +20,7 @@ function HeaderComponent(props) {
             <Grid item>
                 <Fab size='medium'
                      color='primary'
-                     onClick={props.handleDialogOpen}>
+                     onClick={() => { setIsDialogOpen(true) }}>
                     <AddIcon/>
                 </Fab>
             </Grid>
