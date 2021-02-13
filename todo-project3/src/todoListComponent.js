@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 import {
   IconButton,
   ButtonGroup,
@@ -12,22 +12,12 @@ import EditIcon from "@material-ui/icons/Edit";
 import CheckIcon from "@material-ui/icons/Check";
 import Fade from '@material-ui/core/Fade';
 import {Droppable, Draggable} from 'react-beautiful-dnd';
-import {TodoContext} from './context/TodoContext';
-import {StateContext} from './context/StateContext';
 
 // const getTextDecor = (done) => {
 //   return done ? "line-throguh" : "none";
 // };
 
-function TodoListComponent() {
-
-  const [todos, setTodos] = useContext(TodoContext);
-  const state = useContext(StateContext);
-  const [priorityFilter, setPriorityFilter] = state.priorityFilter;
-  const [isDialogOpen, setIsDialogOpen] = state.isDialogOpen;
-  const [isEditMode, setIsEditMode] = state.isEditMode;
-  const [editTodo, setEditTodo] = state.editTodo;
-
+function TodoListComponent(props) {
   return (
     <Droppable droppableId = "todolist">
       { (provided) => 
@@ -39,11 +29,12 @@ function TodoListComponent() {
           { ...provided.droppableProps}
           ref = {provided.innerRef}
         >
-          {todos.filter((t) => {
-            if (priorityFilter ===''){
+          {props.todos.filter((t) => {
+            if (props.priorityFilter ===''){
               return true;
             } else {
-              return t.priority === priorityFilter
+              return t.priority ===
+              props.priorityFilter
             }
           }
           ).map((todo, i) => {
@@ -76,7 +67,7 @@ function TodoListComponent() {
                               color="primary"
                               label={todo.priority}
                               onClick={() => {
-                                setPriorityFilter(todo.priority);
+                                props.handlePriorityClick(todo.priority);
                               }}
                             />
                           </Grid>
@@ -92,26 +83,21 @@ function TodoListComponent() {
                           <IconButton>
                             <EditIcon
                               onClick={() => {
-                                isEditMode(true);
-                                isDialogOpen(true);
-                                editTodo(todo);
+                                props.handleEditClick(todo);
                               }}
                             />
                           </IconButton>
                           <IconButton>
                             <CheckIcon
                               onClick={() => {
-                                const newTodos = [...todos]
-                                const t = todos.find(t => t.id === todo.id)
-                                t.done = !t.done
-                                setTodos(newTodos)
+                                props.handleMarkDone(todo);
                               }}
                             />
                           </IconButton>
                           <IconButton>
                             <DeleteIcon
                               onClick={() => {
-                                setTodos(todos.filter(t => t.id !== todo.id))
+                                props.handleDelete(todo.id);
                               }}
                             />
                           </IconButton>
