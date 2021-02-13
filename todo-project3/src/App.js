@@ -11,16 +11,15 @@ import FormDialogComponent from './FormDialogComponent';
 import Zoom from '@material-ui/core/Zoom';
 import {DragDropContext} from 'react-beautiful-dnd'
 
-function useLocalStorageState(key, defaultValue ='') {
-  const [state, setState] = React.useState(
-    () => JSON.parse(window.localStorage.getItem(key)) || defaultValue,
-  )
-  React.useEffect(() => {
-    window.localStorage.setItem(key, JSON.stringify(state))
-  }, [key, state])
-
-  return [state, setState]
-}
+// function useLocalStorageState(key, defaultValue ='') {
+//   const [state, setState] = React.useState(
+//     () => JSON.parse(window.localStorage.getItem(key)) || defaultValue,
+//   )
+//   React.useEffect(() => {
+//     window.localStorage.setItem(key, JSON.stringify(state))
+//   }, [key, state])
+//   return [state, setState]
+// }
 
 const getCurrentDate = () => {
   const today = new Date();
@@ -39,7 +38,7 @@ function App() {
     if(!isDialogOpen){
       if(isEditMode) setIsEditMode(false);
     }
-  }, [isDialogOpen]);
+  }, [isDialogOpen, isEditMode]);
 
   useEffect(() => {
     if(isEditMode){
@@ -92,33 +91,33 @@ function App() {
     formik.values.priority= 'Low';
     formik.values.dueDate= getCurrentDate();
   }
-  
+
   const handleDelete =(id) => {
     const newTodos = [...todos];
-    setTodos(newTodos.filter(t => t.id !== id))
+    setTodos(newTodos.filter(t => t.id !== id));
   }
 
   const handleMarkDone = (todo) => {
     const newTodos =[...todos];
-    const t = newTodos.find(t => t.id = todo.id);
+    const t = newTodos.find(t => t.id === todo.id);
     t.done = !t.done;
     setTodos(newTodos);
   }
-  
+
   const handlePriorityClick = (priority) => {
     setPriorityFilter(priority)
   }
-  
+
   const handlePriorityFilterDelete = () => {
     setPriorityFilter('');
   }
-  
+
   const formik = useFormik({
-    initialValues: {
-        todoText: '',
-        priority: 'Low',
-        dueDate: getCurrentDate()
-    }
+      initialValues: {
+          todoText: '',
+          priority: 'Low',
+          dueDate: getCurrentDate()
+      }
   });
 
   const onDragEnd = (result) => {
@@ -138,28 +137,25 @@ function App() {
       <CSSBaseline />
       <Container>
         <HeaderComponent
-          handleFabClick={handleDialogOpen}
+          handleDialogOpen={handleDialogOpen}
         />
         {priorityFilter === ''?null:(
           <Zoom in={priorityFilter!==''} timeout={400}>
           <Chip label={priorityFilter}
                 onDelete={handlePriorityFilterDelete}
                 color="secondary"
-                style={{marginTop:"1.2em"}}
-                size='small'/>
+                style={{marginTop:"1.2em"}}/>
           </Zoom>
-        )
-        }
+        )}
         <DragDropContext
-          onDragEnd={onDragEnd}
-        >
-          <TodoListComponent
-            todos={todos}
-            priorityFilter={priorityFilter}
-            handleEditClick={handleEditClick}
-            handleDelete={handleDelete}
-            handleMarkDone={handleMarkDone}
-            handlePriorityClick={handlePriorityClick}/>
+          onDragEnd={onDragEnd}>
+            <TodoListComponent
+              todos={todos}
+              priorityFilter={priorityFilter}
+              handleEditClick={handleEditClick}
+              handleDelete={handleDelete}
+              handleMarkDone={handleMarkDone}
+              handlePriorityClick={handlePriorityClick}/>
         </DragDropContext>
       </Container>
       <FormDialogComponent
