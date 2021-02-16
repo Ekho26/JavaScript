@@ -3,6 +3,11 @@ import {useState,useEffect} from 'react';
 import {useFormik} from 'formik';
 import uuid from 'react-uuid';
 import Chip from '@material-ui/core/Chip';
+import Switch from '@material-ui/core/Switch';
+import Brightness7Icon from '@material-ui/icons/Brightness7';
+import Brightness2Icon from '@material-ui/icons/Brightness2';
+import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { blue, red } from '@material-ui/core/colors';
 import Container from '@material-ui/core/Container';
 import CSSBaseline from '@material-ui/core/CssBaseline';
 import HeaderComponent from './HeaderComponent';
@@ -33,6 +38,7 @@ function App() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [todos, setTodos] = useState([]);
   const [priorityFilter, setPriorityFilter] = useState('');
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     if(!isDialogOpen){
@@ -50,7 +56,7 @@ function App() {
       formik.values.priority= 'Low';
       formik.values.dueDate= getCurrentDate();
     }
-  },[isEditMode]);
+  } );
 
   const handleDialogOpen = () => {
     setIsDialogOpen(true);
@@ -132,10 +138,31 @@ function App() {
     setTodos(newTodos)
   }
 
+  const theme = createMuiTheme({
+    pallete: {
+      type: isDarkMode? 'dark' : 'light',
+      primary: {
+        main: red[500]
+      },
+      secondary: {
+        main: blue[300]
+      }
+    }
+  });
+
   return (
-    <>
+    <ThemeProvider>
       <CSSBaseline />
       <Container>
+        <div style={{
+          marginTop: '1em',
+          display: 'flex',
+          alignItems: 'center'
+        }}>
+          <Brightness7Icon/>
+          <Switch/>
+          <Brightness2Icon/>
+        </div>
         <HeaderComponent
           handleDialogOpen={handleDialogOpen}
         />
@@ -164,7 +191,7 @@ function App() {
         handleSubmit={handleSubmit}
         formik={formik}
         isEditMode={isEditMode}/>
-    </>
+    </ThemeProvider>
   );
 }
 

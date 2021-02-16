@@ -8,7 +8,7 @@ function HeaderComponent(props) {
         <Grid container 
               justify="space-between"
               alignItems="center"
-              style={{marginTop: '2em'}}>
+              style={{marginTop: '2.5em'}}>
             <Grid item>
                 <Typography variant="h4">
                     TODO
