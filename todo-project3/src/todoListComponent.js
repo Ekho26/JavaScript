@@ -69,7 +69,7 @@ function TodoListComponent(props) {
                         </Grid>
                         <Typography variant="body2">Due: {todo.dueDate}</Typography>
                         <ButtonGroup
-                          color="primary"
+                          color="secondary"
                           aria-label="outlined primary button group"
                           variant="text"
                           size="small"

@@ -11,7 +11,7 @@ import {
   makeStyles,
   ThemeProvider,
 } from "@material-ui/core/styles";
-import { blue, orange, lime } from "@material-ui/core/colors";
+import { blue, indigo, grey, deepPurple, deepOrange } from "@material-ui/core/colors";
 import Container from "@material-ui/core/Container";
 import CSSBaseline from "@material-ui/core/CssBaseline";
 import HeaderComponent from "./HeaderComponent";
@@ -20,15 +20,15 @@ import FormDialogComponent from "./FormDialogComponent";
 import Zoom from "@material-ui/core/Zoom";
 import { DragDropContext } from "react-beautiful-dnd";
 
-// function useLocalStorageState(key, defaultValue ='') {
-//   const [state, setState] = React.useState(
-//     () => JSON.parse(window.localStorage.getItem(key)) || defaultValue,
-//   )
-//   React.useEffect(() => {
-//     window.localStorage.setItem(key, JSON.stringify(state))
-//   }, [key, state])
-//   return [state, setState]
-// }
+function useLocalStorageState(key, defaultValue ='') {
+  const [state, setState] = React.useState(
+    () => JSON.parse(window.localStorage.getItem(key)) || defaultValue,
+  )
+  React.useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(state))
+  }, [key, state])
+  return [state, setState]
+}
 
 const getCurrentDate = () => {
   const today = new Date();
@@ -47,13 +47,27 @@ function App() {
     palette: {
       type: isDarkMode ? "dark" : "light",
       primary: {
-        main: isDarkMode ? blue[900] : blue[100],
+        main: isDarkMode ? deepPurple['A700'] : indigo[900],
       },
       secondary: {
-        main: isDarkMode ? orange[200] : lime[200],
+        main: isDarkMode ? deepOrange[400] : blue[400],
       },
+      background: {
+        default: isDarkMode ? grey[900] : grey[100]
+      }
     },
   });
+
+  let useStyles = makeStyles(theme => ({
+    container: {
+      minHeight: '100vh',
+      backgroundColor: isDarkMode? grey[900] : grey[100],
+      color: theme.palette.getContrastText(isDarkMode ? grey[900] : grey[100]),
+      paddingTop: '1em'
+    }
+  }))
+  
+  let classes = useStyles();
 
   useEffect(() => {
     if (!isDialogOpen) {
@@ -159,10 +173,9 @@ function App() {
     <>
       <CSSBaseline />
       <ThemeProvider theme={theme}>
-        <Container>
+        <Container className={classes.container}>
           <div
             style={{
-              marginTop: "1rem",
               display: "flex",
               alignItems: "center",
             }}
