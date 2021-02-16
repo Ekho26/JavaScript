@@ -11,7 +11,6 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import CheckIcon from "@material-ui/icons/Check";
 import Fade from '@material-ui/core/Fade';
-// import Slide from '@material-ui/core/Slide';
 import {Droppable, Draggable} from 'react-beautiful-dnd';
 
 function TodoListComponent(props) {
