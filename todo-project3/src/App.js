@@ -73,7 +73,7 @@ function App() {
     if (!isDialogOpen) {
       if (isEditMode) setIsEditMode(false);
     }
-  }, [isDialogOpen, isEditMode]);
+  }, [isDialogOpen, isEditMode]); 
 
   useEffect(() => {
     if (isEditMode) {
